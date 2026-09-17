@@ -10,15 +10,18 @@ function BookList() {
     let [nop, setNop] = useState(1);
     let [booksPerPage, setBooksPerPage] = useState(3)
     let [pageNo, setPageNumber] = useState(1)
+
     let navigate = useNavigate()
+
     let items = []
     for (let i = 1; i <= nop; i++) {
         items.push(<Pagination.Item key={i} onClick={() => setPageNumber(i)}> {i}</Pagination.Item>)
-
     }
+
     function goToAddBook() {
         navigate('/add/book')
     }
+
     function handleDelete(id) {
         axios({
             //url: 'http://localhost:3000/delete/book/' + id,
@@ -31,9 +34,11 @@ function BookList() {
             alert(err)
         })
     }
+
     function handleUpdate(id) {
         navigate('/edit/book/' + id)
     }
+
     useEffect(() => {
         axios({
             url: 'http://localhost:3000/books',
@@ -51,6 +56,7 @@ function BookList() {
             alert(err)
         })
     }, [isDelete, searchBook, pageNo])
+    
     return (
         <Container>
             <Row>

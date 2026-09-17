@@ -6,6 +6,7 @@ const apiUrl = import.meta.env.VITE_API_URL
 import axios from "axios"
 function AddBook() {
     let navigate = useNavigate()
+
     let [bookTitle, setBookTitle] = useState('')
     let [authorName, setAuthorName] = useState('')
     let [price, setPrice] = useState(0)
@@ -13,6 +14,7 @@ function AddBook() {
     let [nop, setNop] = useState(0)
     let [publication, setPublication] = useState('')
     let [file, setFile] = useState('')
+
     function addBook() {
         // let data = {
         //     bookTitle: bookTitle,
@@ -22,6 +24,7 @@ function AddBook() {
         //     nop: nop,
         //     publication: publication
         // }
+
         let formData = new FormData()
         formData.append('bookTitle', bookTitle)
         formData.append('authorName', authorName)
@@ -84,6 +87,7 @@ function AddBook() {
                             <Form.Label>Select the Book Image</Form.Label>
                             <Form.Control type="file" onChange={(e) => setFile(e.target.files[0])}></Form.Control>
                         </Form.Group>
+                        
                         <Button variant="success" className='mt-3' onClick={addBook}>Add Book</Button>
                     </Form>
                 </Col>

@@ -15,6 +15,7 @@ function BookPageForEdit() {
         isbnNo: '',
         nop: 0
     })
+
     useEffect(() => {
 
         axios({
@@ -28,6 +29,7 @@ function BookPageForEdit() {
         })
 
     }, [])
+
     function manageUpdate(e) {
         let name = e.target.name
         let value = e.target.value
@@ -38,6 +40,7 @@ function BookPageForEdit() {
             }
         })
     }
+
     function editBook() {
         axios({
             //url: 'http://localhost:3000/edit/book/' + id,
@@ -51,6 +54,7 @@ function BookPageForEdit() {
             alert(err)
         })
     }
+    
     return (
         <Container className='align-items-center justify-content-center min-vh-100'>
             <Row className='w-100 justify-content-center'>
