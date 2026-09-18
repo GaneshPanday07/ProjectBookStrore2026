@@ -1,5 +1,6 @@
 const Book = require('../models/Book')
 const cloudinary = require('cloudinary').v2
+
 const addBook = async (req, res) => {
   try {
     cloudinary.config({
@@ -18,6 +19,7 @@ const addBook = async (req, res) => {
     res.status(400).send({ message: 'Something Went Wrong' })
   }
 }
+
 const getBooks = async (req, res) => {
   try {
     let totalBooks = await Book.countDocuments({})
@@ -33,6 +35,7 @@ const getBooks = async (req, res) => {
     res.status(400).send({ message: error })
   }
 }
+
 const deleteBook = async (req, res) => {
   try {
     id = req.params.id
@@ -43,6 +46,7 @@ const deleteBook = async (req, res) => {
     res.status(400).send({ success: false })
   }
 }
+
 const getBookForEdit = async (req, res) => {
   try {
     let id = req.params.id
@@ -55,6 +59,7 @@ const getBookForEdit = async (req, res) => {
     res.status(400).send({ data: err })
   }
 }
+
 const editBook = async (req, res) => {
   try {
     let id = req.params.id

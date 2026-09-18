@@ -16,7 +16,6 @@ app.use(home)
 connect();
 createAdmin();
 
-
 app.listen(3000, (err) => {
     if(err) {
         console.log(err)

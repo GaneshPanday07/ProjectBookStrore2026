@@ -14,6 +14,7 @@ function WelcomePage() {
         setUserName(localStorage.getItem('name'))
       }
     },[])
+    
   return (
 
       <Container style={{ position: "relative", zIndex: 1 }}>
