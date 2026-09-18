@@ -5,13 +5,17 @@ const apiUrl = import.meta.env.VITE_API_URL
 import axios from "axios";
 function DiscountList() {
     let [discounts, setDiscounts] = useState([]);
+
     const navigate = useNavigate();
+
     function goToAddDiscount () {
         navigate('/add/discount')
     }
+
     function goForEdit(id) {
         navigate('/edit/discount/' + id)
     }
+
     useEffect(() => {
         axios({
             url: apiUrl + '/discounts',
@@ -22,6 +26,7 @@ function DiscountList() {
             alert(err);
         })
     } ,[])
+    
     return(
         <Container>
             <Row>

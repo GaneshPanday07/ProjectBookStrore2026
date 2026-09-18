@@ -6,6 +6,7 @@ const apiUrl = import.meta.env.VITE_API_URL
 
 const CreateDiscount = () => {
   const navigate = useNavigate()
+
   let [books, setBooks] = useState([])
   let [book, setBook] = useState('')
   let [discountName, setDiscountName] = useState('')
@@ -13,6 +14,7 @@ const CreateDiscount = () => {
   let [discountValue, setDiscountValue] = useState(0)
   let [validFrom, setValidFrom] = useState('')
   let [validTo, setValidTo] = useState('')
+
   useEffect(() => {
     axios({
       url: apiUrl + '/books/for/discount',
@@ -25,6 +27,7 @@ const CreateDiscount = () => {
         alert(err)
       })
   }, [])
+
   function addDiscount () {
     let data = {
       book: book,
@@ -47,6 +50,7 @@ const CreateDiscount = () => {
         console.log(err)
       })
   }
+  
   return (
     <Container>
       <Row>

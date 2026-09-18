@@ -6,8 +6,10 @@ const apiUrl = import.meta.env.VITE_API_URL
 
 function DiscountForEdit() {
     let navigate = useNavigate();
+
     let params = useParams()
     let id = params.id
+
     let [books, setBooks] = useState([])
     let [discount, setDiscount] = useState({
         book: '',
@@ -54,6 +56,7 @@ function DiscountForEdit() {
             alert("err...")
         })
     }
+    
     return(
         <Container>
             <Row>
