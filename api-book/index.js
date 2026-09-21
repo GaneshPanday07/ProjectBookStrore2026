@@ -5,6 +5,7 @@ const book = require('./routes/BookRoutes')
 const createAdmin = require('./createAdmin');
 const User = require('./routes/UserRoutes');
 const home = require('./routes/user/Home')
+const frontUser = require('./routes/user/user')
 const discount = require('./routes/DiscountRoutes')
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(book);
 app.use(discount);
 app.use(User);
 app.use(home)
+app.use(frontUser)
 connect();
 createAdmin();
 

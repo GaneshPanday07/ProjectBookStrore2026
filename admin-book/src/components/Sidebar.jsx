@@ -64,6 +64,15 @@ function Sidebar () {
               <span className='d-none d-md-inline'>Manage Discount</span>
             </ListGroup.Item>
 
+            <ListGroup.Item
+              as={NavLink}
+              to='/users'
+              className='d-flex align-items-center gap-2'
+            >
+              <i className='bi bi-book'></i>
+              <span className='d-none d-md-inline'>Manage user</span>
+            </ListGroup.Item>
+
             {/* <ListGroup.Item
               as={NavLink}
               to="/branches"

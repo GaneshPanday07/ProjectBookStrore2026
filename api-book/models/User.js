@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, },
-    mobileNo: { type: String, required: true },
+    mobileNo: { type: String },
     email: { type: String, required: true },
     password: { type: String, required: true },
     profilePhoto: { type: String, },
@@ -14,6 +14,6 @@ const userSchema = new Schema({
     status: { type: String, default: 'active', enum: ['active', 'inactive'] },
     createdAt: Date,
     updatedAt: Date,
-})
+}, {timestamps: true})
 //userSchema.plugin(timestamps, {index:true});
 module.exports = mongoose.model('User', userSchema);

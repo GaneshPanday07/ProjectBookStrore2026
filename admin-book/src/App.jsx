@@ -5,9 +5,12 @@ import BookList from './pages/books/BookList'
 import AddBook from './pages/books/AddBook'
 import BookPageForEdit from './pages/books/BookPageForEdit'
 import AdminLogin from './pages/LoginSignupPages/AdminLogin'
+//Discounts
 import CreateDiscount from './pages/Discount/CreateDiscount'
 import DiscountList from './pages/Discount/DiscountList'
 import DiscountForEdit from './pages/Discount/DiscountForEdit'
+//users
+import UserList from './pages/users/userList'
 function App() {
   return (
     <BrowserRouter>
@@ -36,6 +39,8 @@ function App() {
             <Route path = '/add/discount' element = {<CreateDiscount></CreateDiscount>}></Route>
             <Route path = '/edit/discount/:id' element={<DiscountForEdit></DiscountForEdit>}></Route>
 
+            {/** user page */}
+            <Route path= '/users' element = {<UserList />} />
           </Routes>
         </main>
       </div>
