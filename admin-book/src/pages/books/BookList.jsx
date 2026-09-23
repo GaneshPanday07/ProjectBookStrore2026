@@ -18,10 +18,6 @@ function BookList() {
         items.push(<Pagination.Item key={i} onClick={() => setPageNumber(i)}> {i}</Pagination.Item>)
     }
 
-    function goToAddBook() {
-        navigate('/add/book')
-    }
-
     function handleDelete(id) {
         axios({
             //url: 'http://localhost:3000/delete/book/' + id,
@@ -66,7 +62,7 @@ function BookList() {
                             <Form.Control type="text" placeholder="Enter book title to search...." onChange={(e) => setSearchBook(e.target.value)}></Form.Control>
                         </Form.Group>
                     </Form>
-                    <Button className="mt-5" variant="success" style={{ float: 'right' }} onClick={goToAddBook}>Add Book +</Button>
+                    <Button className="mt-5" variant="success" style={{ float: 'right' }} onClick={() => navigate('/add/book')}>Add Book +</Button>
                     <h3 className="text-center text-danger mt-5">Book List</h3>
                     <Table bordered hover>
                         <thead>

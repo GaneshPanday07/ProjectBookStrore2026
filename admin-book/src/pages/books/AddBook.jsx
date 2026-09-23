@@ -45,7 +45,7 @@ function AddBook() {
             alert(res.data.message)
             navigate('/books')
         }).catch((err) => {
-            alert(err)
+            alert(err.message)
         })
 
     }

@@ -26,7 +26,7 @@ const doAdminLogin = async (req, res) => {
 const getUsers = async(req, res) => {
   try{
     let users = await User.find({});
-    console.log(users)
+    //console.log(users)
     res.status(200).send({data: users})
   } catch(err) {
     console.log(err)
