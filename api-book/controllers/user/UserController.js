@@ -17,7 +17,7 @@ const addUser = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
-    res.status(400).send({ success: false });
+    res.status(400).send({ message: "Something Went Wrong..." });
   }
 };
 

@@ -10,7 +10,7 @@ function NavBar() {
   let [isLoggedIn, setIsLoggedIn] = useState(false)
   let [userName, setUserName] = useState('')
   useEffect(()=> {
-    let flag = localStorage.getItem('isLoogedIn')
+    let flag = localStorage.getItem('isLoggedIn')
     if(flag) {
       setIsLoggedIn(true) 
       setUserName(localStorage.getItem('name'))
@@ -29,7 +29,7 @@ function NavBar() {
             <Nav.Link href="#features">Features</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
           </Nav>
-          {isLoggedIn && <span>welcome {userName}</span>}
+          {isLoggedIn && <span className="text-white">welcome {userName}</span>}
           {isLoggedIn && <Button variant="danger" className="ms-1">Logout</Button>}
           {!isLoggedIn && <Button variant="success" className='ms-1' onClick={goForLogin}>Login</Button>}
         </Container>

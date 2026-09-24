@@ -7,12 +7,15 @@ function Login() {
     let [show, setShow] = useState(true)
     let [showLoginWindow, setShowLoginWindow] = useState(true)
     let [showSignupWindow, setSignupWindow] = useState(false)
-    let [firstName, setFirstName] = useState('')
-    let [lastName,setLastName] = useState('')
-    let [email, setEmail] = useState('')
-    let [password, setPassword] = useState('')
-    let [confirmPassword, setConfirmPassword] = useState('')
-    let [title, setTitle] = useState('login')
+
+    let [firstName, setFirstName] = useState("")
+    let [lastName,setLastName] = useState("")
+    let [email, setEmail] = useState("")
+    let [password, setPassword] = useState("")
+    let [confirmPassword, setConfirmPassword] = useState("")
+
+    let [title, setTitle] = useState("Login");
+
     function handleClose() {
         setShow(false)
     }
@@ -28,7 +31,13 @@ function Login() {
         setSignupWindow(false)
         setTitle('Login')
     }
-    function doLogin() {
+    function doLogin(e) {
+        e.preventDefault();
+         
+        if (!email || !password) {
+            alert("Please enter email and password");
+            return; 
+        }
         let data = {
             email: email,
             password: password
@@ -61,9 +70,10 @@ function Login() {
         method: 'post',
         data: data
     }).then((res)=> {
+        alert('ok')
         alert(res.data.message)
     }).catch((err) => {
-        alert('err')
+        alert(err.message)
     })
 }
     return(
@@ -81,7 +91,7 @@ function Login() {
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="text" onChange={(e) => setPassword(e.target.value)}></Form.Control>
+                        <Form.Control type="password" onChange={(e) => setPassword(e.target.value)}></Form.Control>
                     </Form.Group>
                     <div className="text-center">
                         <Button variant="success" className="mt-2" onClick={doLogin} >Login</Button>
