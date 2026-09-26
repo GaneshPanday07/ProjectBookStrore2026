@@ -30,14 +30,14 @@ function Sidebar () {
       <div
         className='d-flex flex-column justify-content-between border-end sticky-top'
         style={{
-          width: '18%',
+          width: '16%',
           height: '100vh',
           borderRight: '1px solid #dee2e6',
-          boxShadow: '2px 0 8px rgba(0, 0, 0, 0.1)'
+          boxShadow: '2px 0 8px rgba(219, 17, 17, 0.1)'
         }}
       >
         <div className='p-3 border-bottom d-flex align-items-center'>
-          <Image src={logo} width={40} height={40} className='me-2' />
+          <Image src={logo} width={50} height={50} className='me-2' />
           <span className='fw-bold d-none d-md-inline fs-2'>RDEC</span>
         </div>
 
@@ -72,47 +72,6 @@ function Sidebar () {
               <i className='bi bi-book'></i>
               <span className='d-none d-md-inline'>Manage user</span>
             </ListGroup.Item>
-
-            {/* <ListGroup.Item
-              as={NavLink}
-              to="/branches"
-              className="d-flex align-items-center gap-2"
-            >
-              <i className="bi bi-backpack4-fill"></i>
-              <span className="d-none d-md-inline">Branch</span>
-            </ListGroup.Item> */}
-            {/* <ListGroup.Item
-              as={NavLink}
-              to="/subjects"
-              className="d-flex align-items-center gap-2"
-            >
-              <i className="bi bi-collection"></i>
-              <span className="d-none d-md-inline">Subjects</span>
-            </ListGroup.Item> */}
-            {/* <ListGroup.Item
-              as={NavLink}
-              to="/subjectsmap"
-              className="d-flex align-items-center gap-2"
-            >
-              <i className='bi bi-book'></i>
-              <span className="d-none d-md-inline">Subject Mapping</span>
-            </ListGroup.Item> */}
-            {/* <ListGroup.Item
-              as={NavLink}
-              to="/faculties"
-              className="d-flex align-items-center gap-2"
-            >
-              <i className='bi bi-person-square'></i>
-              <span className="d-none d-md-inline">Faculty</span>
-            </ListGroup.Item> */}
-            {/* <ListGroup.Item
-              as={NavLink}
-              to="/students"
-              className="d-flex align-items-center gap-2"
-            >
-              <i className='bi bi-eyedropper'></i>
-              <span className="d-none d-md-inline">Student</span>
-            </ListGroup.Item> */}
           </ListGroup>
         </div>
 

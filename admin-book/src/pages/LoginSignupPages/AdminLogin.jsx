@@ -14,6 +14,7 @@ import axios from "axios";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import logo from "../../assets/logo.png";
 
+
 function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -72,40 +73,14 @@ function AdminLogin() {
       fluid
       className="min-vh-100 d-flex justify-content-center align-items-center"
       style={{
-        background:
-          "linear-gradient(135deg, #0f172a 0%, #1e1b4b 45%, #312e81 100%)",
-        position: "relative",
-        overflow: "hidden",
-      }}
+    backgroundImage: `url(${logo})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    position: "relative",
+  }}
+      
     >
-
-      {/* Background Circles */}
-      <div
-        style={{
-          position: "absolute",
-          width: "350px",
-          height: "350px",
-          borderRadius: "50%",
-          background: "rgba(99, 102, 241, 0.25)",
-          top: "-100px",
-          left: "-100px",
-          filter: "blur(5px)",
-        }}
-      ></div>
-
-      <div
-        style={{
-          position: "absolute",
-          width: "400px",
-          height: "400px",
-          borderRadius: "50%",
-          background: "rgba(14, 165, 233, 0.20)",
-          bottom: "-150px",
-          right: "-100px",
-          filter: "blur(5px)",
-        }}
-      ></div>
-
       <Row className="w-100 justify-content-center position-relative">
 
         <Col xs={11} sm={8} md={6} lg={4} xl={4}>
@@ -114,7 +89,7 @@ function AdminLogin() {
             className="border-0 shadow-lg"
             style={{
               borderRadius: "24px",
-              background: "rgba(255, 255, 255, 0.96)",
+              background: "rgba(228, 225, 225, 0.96)",
               backdropFilter: "blur(15px)",
             }}
           >
