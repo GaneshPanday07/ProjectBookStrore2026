@@ -4,11 +4,13 @@ import { createRoot } from 'react-dom/client'
 import NavBar from './NavBar.jsx'
 import ImageSlider from './ImageSlider.jsx'
 import HomeCard from './HomeCard.jsx'
+import Footer from './Footer.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <NavBar />
     <ImageSlider />
     <HomeCard />
+    <Footer />
   </StrictMode>,
 )
