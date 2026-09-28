@@ -7,39 +7,6 @@ function Footer() {
   return (
     <footer className="bg-dark text-light mt-5">
 
-      {/* Newsletter Section */}
-      <div className="bg-primary py-4">
-        <Container>
-          <Row className="align-items-center">
-            <Col md={7}>
-              <h4 className="fw-bold mb-1">
-                Stay Updated with New Books 📚
-              </h4>
-              <p className="mb-0">
-                Subscribe to get updates about new arrivals, offers and
-                exclusive deals.
-              </p>
-            </Col>
-
-            <Col md={5}>
-              <Form className="d-flex mt-3 mt-md-0">
-                <Form.Control
-                  type="email"
-                  placeholder="Enter your email"
-                  className="rounded-start"
-                />
-                <Button
-                  variant="dark"
-                  className="px-4"
-                >
-                  Subscribe
-                </Button>
-              </Form>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-
       {/* Main Footer */}
       <Container className="py-5">
         <Row>
@@ -48,7 +15,7 @@ function Footer() {
           <Col md={4} className="mb-4">
             <h3 className="fw-bold">
               <i className="bi bi-book-half me-2"></i>
-              BookStore
+              REDC BookStore
             </h3>
 
             <p className="text-secondary mt-3">
@@ -56,7 +23,7 @@ function Footer() {
               fiction, education, technology, business and many more.
             </p>
 
-            <div className="d-flex gap-3 mt-4">
+            <div className="d-flex gap-4 mt-4">
               <a href="#" className="text-light fs-5">
                 <i className="bi bi-facebook"></i>
               </a>
@@ -89,30 +56,6 @@ function Footer() {
                   Home
                 </a>
               </li>
-
-              <li className="mb-2">
-                <a href="/books" className="text-secondary text-decoration-none">
-                  Books
-                </a>
-              </li>
-
-              <li className="mb-2">
-                <a href="/categories" className="text-secondary text-decoration-none">
-                  Categories
-                </a>
-              </li>
-
-              <li className="mb-2">
-                <a href="/about" className="text-secondary text-decoration-none">
-                  About Us
-                </a>
-              </li>
-
-              <li>
-                <a href="/contact" className="text-secondary text-decoration-none">
-                  Contact
-                </a>
-              </li>
             </ul>
           </Col>
 
@@ -140,17 +83,17 @@ function Footer() {
 
             <p className="text-secondary mb-2">
               <i className="bi bi-telephone-fill me-2"></i>
-              +91 98765 43210
+              +91 9999xxxxxx
             </p>
 
             <p className="text-secondary mb-2">
               <i className="bi bi-envelope-fill me-2"></i>
-              support@bookstore.com
+              redc@bookstore.com
             </p>
 
             <p className="text-secondary">
               <i className="bi bi-clock-fill me-2"></i>
-              Mon - Sat: 9:00 AM - 7:00 PM
+              Mon - Sun: 8:00 AM - 10:00 PM
             </p>
           </Col>
 
@@ -164,7 +107,7 @@ function Footer() {
 
             <Col md={6}>
               <p className="mb-0 text-secondary">
-                © 2026 BookStore. All Rights Reserved.
+                © 2026 REDC BookStore. All Rights Reserved.
               </p>
             </Col>
 
