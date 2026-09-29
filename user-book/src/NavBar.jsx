@@ -26,7 +26,11 @@ function NavBar() {
           <Navbar.Brand href="#home">REDC</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#home">Books</Nav.Link>
+            <Nav.Link href="#home">Contact Us</Nav.Link>
           </Nav>
+            
+          
           {isLoggedIn && <span className="text-white">welcome {userName}</span>}
           {isLoggedIn && <Button variant="danger" className="ms-1">Logout</Button>}
           {!isLoggedIn && <Button variant="success" className='ms-1' onClick={goForLogin}>Login</Button>}

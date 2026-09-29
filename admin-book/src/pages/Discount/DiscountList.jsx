@@ -61,7 +61,7 @@ function DiscountList() {
                                         <td>{discount.discountName}</td>
                                         <td>{discount.discountType}</td>
                                         <td>{discount.discountValue}</td>
-                                        <td>{discount.book.bookTitle}</td>
+                                        {/**<td>{discount.book.bookTitle}</td>*/}
                                         <td>{new Date(discount.validFrom).toLocaleDateString()}</td>
                                         <td>{new Date(discount.validTo).toLocaleDateString()}</td>
                                         <td style={{color: discount.status === "Active" ? "green" : "red"}}>{discount.status}</td>

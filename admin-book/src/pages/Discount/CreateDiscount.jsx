@@ -124,7 +124,8 @@ const CreateDiscount = () => {
         </Col>
       </Row>
       <div className='text-center mt-5'>
-        <Button variant='success' onClick={addDiscount}>
+        <Button variant="secondary" onClick={() => navigate('/discounts')}>Cancel</Button>
+        <Button variant='success' className="ms-3" onClick={addDiscount}>
           Add Discount
         </Button>
       </div>

@@ -13,6 +13,7 @@ import {
 import axios from "axios";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import logo from "../../assets/logo.png";
+import Rdlogo from "../../pic/rdbg.png"
 
 
 function AdminLogin() {
@@ -73,7 +74,7 @@ function AdminLogin() {
       fluid
       className="min-vh-100 d-flex justify-content-center align-items-center"
       style={{
-    backgroundImage: `url(${logo})`,
+    backgroundImage: `url(${Rdlogo})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -81,7 +82,7 @@ function AdminLogin() {
   }}
       
     >
-      <Row className="w-100 justify-content-center position-relative">
+      <Row className="w-100 ms-5 position-relative">
 
         <Col xs={11} sm={8} md={6} lg={4} xl={4}>
 
@@ -89,8 +90,8 @@ function AdminLogin() {
             className="border-0 shadow-lg"
             style={{
               borderRadius: "24px",
-              background: "rgba(228, 225, 225, 0.96)",
-              backdropFilter: "blur(15px)",
+              background: "rgba(244, 209, 209, 0)",
+              backdropFilter: "blur(5px)",
             }}
           >
 

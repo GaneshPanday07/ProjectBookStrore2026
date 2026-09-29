@@ -1,16 +1,16 @@
-import { StrictMode } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
 //import App from './App.jsx'
 import NavBar from './NavBar.jsx'
-import ImageSlider from './ImageSlider.jsx'
 import HomeCard from './HomeCard.jsx'
-import Footer from './Footer.jsx'
+import BookDetail from './BookDetail.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <BrowserRouter>
     <NavBar />
-    <ImageSlider />
-    <HomeCard />
-    <Footer />
-  </StrictMode>,
+    <Routes>
+      <Route path="/" element={<HomeCard />}></Route>
+      <Route path="/user/book/detail/:id" element={<BookDetail />}></Route>
+    </Routes>
+  </BrowserRouter>  
 )
