@@ -1,43 +1,55 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { Button } from "react-bootstrap"
-import { useState, useEffect } from 'react';
-import Login from './Login';
+import Container from 'react-bootstrap/Container'
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
+import { Button } from 'react-bootstrap'
+import { useState, useEffect } from 'react'
+import Login from './Login'
+import logo from './assets/logo.png'
 
-function NavBar() {
-  let [showLoginModal, setShowLoginModal]  = useState(false)
+function NavBar () {
+  let [showLoginModal, setShowLoginModal] = useState(false)
   let [isLoggedIn, setIsLoggedIn] = useState(false)
   let [userName, setUserName] = useState('')
-  useEffect(()=> {
-    let flag = localStorage.getItem('isLoggedIn')
-    if(flag) {
-      setIsLoggedIn(true) 
-      setUserName(localStorage.getItem('name'))
-    }
+  useEffect(() => {
+      let flag = localStorage.getItem('isLoggedIn')
+      if(flag) {
+        setIsLoggedIn(true)
+        setUserName(localStorage.getItem('name'))
+      }
   }, [])
-  function goForLogin() {
+  function goForLogin () {
     setShowLoginModal(true)
   }
-    return(
-      <>
-        <Navbar bg="dark" data-bs-theme="dark">
-        <Container>
-          <Navbar.Brand href="#home">REDC</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#home">Books</Nav.Link>
-            <Nav.Link href="#home">Contact Us</Nav.Link>
+  return (
+    <>
+      <Navbar bg='dark' data-bs-theme='dark'>
+        <Container fluid className='px-2'>
+          {' '}
+          <Navbar.Brand className='fw-bold fs-4'>
+            <img
+              src={logo}
+              width='40'
+              height='40'
+              className='d-inline-block align-middle me-3'
+              alt='BookStore Logo'
+            />
+            REDC BookStore
+          </Navbar.Brand>
+          <Nav className='me-auto'>
+            <Nav.Link href='#home'>Home</Nav.Link>
+            <Nav.Link href='#books'>Books</Nav.Link>
+            <Nav.Link href='#contact us'>Contact Us</Nav.Link>
           </Nav>
-            
-          
-          {isLoggedIn && <span className="text-white">welcome {userName}</span>}
-          {isLoggedIn && <Button variant="danger" className="ms-1">Logout</Button>}
-          {!isLoggedIn && <Button variant="success" className='ms-1' onClick={goForLogin}>Login</Button>}
+          {isLoggedIn && <span className='text-white'>Welcome {userName}</span>}
+          {isLoggedIn && <Button variant='danger' className='ms-1'>Logout</Button>}
+          {!isLoggedIn && <Button variant='success' className='ms-1' onClick={goForLogin}>
+            Login
+          </Button>}
         </Container>
       </Navbar>
-      { showLoginModal && <Login>sign Up</Login> }
-      </>
-    )
+      {showLoginModal && <Login></Login>}
+    </>
+  )
 }
+
 export default NavBar
