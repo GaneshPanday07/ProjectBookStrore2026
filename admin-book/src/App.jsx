@@ -5,47 +5,52 @@ import BookList from './pages/books/BookList'
 import AddBook from './pages/books/AddBook'
 import BookPageForEdit from './pages/books/BookPageForEdit'
 import AdminLogin from './pages/LoginSignupPages/AdminLogin'
-//Discounts
 import CreateDiscount from './pages/Discount/CreateDiscount'
 import DiscountList from './pages/Discount/DiscountList'
 import DiscountForEdit from './pages/Discount/DiscountForEdit'
-//users
-import UserList from './pages/users/userList'
+import BookDetail from './pages/books/BookDetail'
+import UserList from './pages/Users/UserList'
 function App() {
   return (
     <BrowserRouter>
-
       {/* <NavBar /> */}
       <Routes>
-        <Route path='/' element={<AdminLogin />} />
+        <Route path="/" element={<AdminLogin />} />
       </Routes>
-
 
       <div className="d-flex">
         <Sidebar />
-        <main style={{ flexGrow: 1, padding: '20px' }}>
+        <main style={{ flexGrow: 1, padding: "20px" }}>
           <Routes>
-
             <Route path="/admin/dashboard" element={<WelcomePage />} />
 
             {/* Welcome Page */}
             <Route path="/" element={<WelcomePage />} />
             <Route path="/books" element={<BookList> </BookList>}></Route>
-            <Route path='/add/book' element={<AddBook></AddBook>}></Route>
-            <Route path='/edit/book/:id' element={<BookPageForEdit></BookPageForEdit>}></Route>
-            
-            {/* Discount Page */}
-            <Route path = '/discounts' element = {<DiscountList></DiscountList>}></Route>
-            <Route path = '/add/discount' element = {<CreateDiscount></CreateDiscount>}></Route>
-            <Route path = '/edit/discount/:id' element={<DiscountForEdit></DiscountForEdit>}></Route>
-
-            {/** user page */}
-            <Route path= '/users' element = {<UserList />} />
+            <Route path="/add/book" element={<AddBook></AddBook>}></Route>
+            <Route
+              path="/edit/book/:id"
+              element={<BookPageForEdit></BookPageForEdit>}
+            ></Route>
+            <Route
+              path="/discounts"
+              element={<DiscountList></DiscountList>}
+            ></Route>
+            <Route
+              path="/add/discount"
+              element={<CreateDiscount></CreateDiscount>}
+            ></Route>
+            <Route
+              path="/edit/discount/:id"
+              element={<DiscountForEdit></DiscountForEdit>}
+            ></Route>
+            <Route path="/book/:id" element={<BookDetail></BookDetail>}></Route>
+            <Route path='/users' element={<UserList></UserList>}></Route>
           </Routes>
         </main>
       </div>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App

@@ -8,26 +8,21 @@ const apiUrl = import.meta.env.VITE_API_URL
 function HomeCard () {
   let navigate = useNavigate();
   let [books, setBooks] = useState([])
-  let [selectedBook, setSelectedBook] = useState(
-    localStorage.getItem('selectedBook')
-  );
 
   useEffect(() => {
     axios({
       url: apiUrl + '/user/books',
       method: 'get'
     })
-      .then(res => {
+      .then((res) => {
         setBooks(res.data.data)
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err)
       })
   }, [])
+
   function goToDetailPage(id) {
-    setSelectedBook(id);
-    localStorage.setItem('selectedBook', id);
-    
     navigate('/user/book/detail/' + id);
   }
 
@@ -50,29 +45,15 @@ function HomeCard () {
 
       {/* Books */}
       <Row className='g-4'>
-        {books.map((book, index) => (
-          <Col key={index} xs={12} sm={6} md={4} lg={3}>
+        {books.map((book) => (
+          <Col key={book._id} xs={12} sm={6} md={4} lg={3}>
             <Card
   onClick={() => goToDetailPage(book._id)}
-  className="h-100"
+  className='h-100'
   style={{
     borderRadius: '12px',
     overflow: 'hidden',
-    backgroundColor:
-      selectedBook === book._id ? '#e8f1ff' : '#ffffff',
-
-    border:
-      selectedBook === book._id
-        ? '3px solid #0d6efd'
-        : '1px solid transparent',
-
-    boxShadow:
-      selectedBook === book._id
-        ? '0 0 0 3px rgba(13, 110, 253, 0.2), 0 6px 20px rgba(13, 110, 253, 0.25)'
-        : '0 4px 15px rgba(0, 0, 0, 0.12)',
-
-    cursor: 'pointer',
-    transition: 'all 0.2s ease'
+    cursor: 'pointer'
   }}
 >
               {/* Image Section */}

@@ -14,7 +14,6 @@ function WelcomePage() {
         setUserName(localStorage.getItem('name'))
       }
     },[])
-    
   return (
 
       <Container style={{ position: "relative", zIndex: 1 }}>
@@ -24,35 +23,15 @@ function WelcomePage() {
               <div className="d-flex flex-column align-items-center">
                 <Image
                   src={logo}
-                  width="150"
-                  height="150"
+                  width="80"
+                  height="80"
                   roundedCircle
                   className="mb-3"
                 />
                 <h2 className="fw-bold mb-2">Welcome,{username}</h2>
-                <p
-  className="mb-4"
-  style={{
-    fontSize: "17px",
-    lineHeight: "1.8",
-    color: "#64748b",
-    fontWeight: "400",
-    letterSpacing: "0.2px",
-    maxWidth: "600px",
-  }}
->
-  Everything you need to manage your{" "}
-  <span
-    style={{
-      color: "#4f46e5",
-      fontWeight: "600",
-    }}
-  >
-    academic operations
-  </span>{" "}
-  — organized in one simple, smart, and powerful dashboard.
-</p>
-
+                <p className="text-muted mb-4">
+                  Manage your courses, branches, and subjects easily using the dashboard.
+                </p>
               </div>
             </Card>
           </Col>
