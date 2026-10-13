@@ -32,19 +32,25 @@ import HomeCard from './HomeCard.jsx'
 import Footer from './Footer.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import BookDetail from './BookDetail.jsx'
+import { Provider } from 'react-redux'
+import store from './app/store.js'
+import Cart from './Cart.jsx'
 
 
 function App () {
   return (
     <>
+    <Provider store={store}>
     <BrowserRouter>
         <NavBar />
         <Routes>
       <Route path='/' element={<HomeCard></HomeCard>}></Route>
       <Route path='/user/book/detail/:id' element={<BookDetail></BookDetail>}></Route>
+      <Route path='/cart' element={<Cart />}></Route>
     </Routes>
       <Footer />
     </BrowserRouter>
+    </Provider>
 
     
     </>

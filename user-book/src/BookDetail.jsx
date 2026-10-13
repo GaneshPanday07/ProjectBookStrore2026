@@ -49,6 +49,8 @@ export default BookDetail */}
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addProduct } from './feactures/cart/cartSlice'
 const apiUrl = import.meta.env.VITE_API_URL
 import axios from 'axios'
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap'
@@ -57,6 +59,7 @@ function BookDetail () {
   const navigate = useNavigate()
   let [book, setBook] = useState({})
   let params = useParams()
+  let dispatch = useDispatch()
   let id = params.id
   useEffect(() => {
     axios({
@@ -70,6 +73,10 @@ function BookDetail () {
         console.log(err)
       })
   }, [])
+
+  function addToCart(){
+    dispatch(addProduct(book))
+  }
 
   return (
     <Container className='py-4'>
@@ -112,6 +119,7 @@ function BookDetail () {
                 style={{ width: '345px' }}
                 size='lg'
                 variant='warning'
+                onClick={addToCart}
               >
                 Add To Cart
               </Button>
@@ -182,7 +190,7 @@ function BookDetail () {
         </div>
 
         {/* Add To Cart */}
-        <Button style={{ width: '180px' }} size='lg' variant='warning'>
+        <Button style={{ width: '180px' }} size='lg' variant='warning' onClick={addToCart}>
           Add To Cart
         </Button>
 
