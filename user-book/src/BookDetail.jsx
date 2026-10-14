@@ -50,7 +50,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addProduct } from './feactures/cart/cartSlice'
+import { addProduct } from './features/cart/cartSlice'
 const apiUrl = import.meta.env.VITE_API_URL
 import axios from 'axios'
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap'
