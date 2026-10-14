@@ -27,7 +27,7 @@ const {products} = useSelector((state) => state.cart)
   
   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar bg="dark" data-bs-theme="dark" className="sticky-top">
         <Container fluid className="px-2">
           {" "}
           <Navbar.Brand className="fw-bold fs-4">
