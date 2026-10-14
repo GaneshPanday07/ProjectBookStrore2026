@@ -1,7 +1,6 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import { deleteProduct, totalCost } from "./features/cart/cartSlice";
 function Cart() {
   const { products, totalCost } = useSelector((state) => state.cart);

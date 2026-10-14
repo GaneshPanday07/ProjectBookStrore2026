@@ -40,6 +40,7 @@ const {products} = useSelector((state) => state.cart)
             />
             RDEC BookStore
           </Navbar.Brand>
+          
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#books">Books</Nav.Link>
