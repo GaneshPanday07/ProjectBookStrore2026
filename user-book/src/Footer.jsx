@@ -2,6 +2,7 @@ import { Container, Row, Col, } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 function Footer() {
+  
   return (
     <footer className="bg-dark text-light mt-5">
 
