@@ -1,34 +1,50 @@
-import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
-import { Button, Badge } from 'react-bootstrap'
-import { useState, useEffect } from 'react'
-import { useNavigate } from "react-router-dom"
-import { useSelector } from 'react-redux'
-import Login from './Login'
-import logo from './assets/logo.png'
-function NavBar () {
-  let [showLoginModal, setShowLoginModal] = useState(false)
-  let [isLoggedIn, setIsLoggedIn] = useState(false)
-  let [userName, setUserName] = useState('')
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import { Button, Badge } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Login from "./Login";
+import logo from "./assets/logo.png";
+function NavBar() {
+  let [showLoginModal, setShowLoginModal] = useState(false);
+  let [isLoggedIn, setIsLoggedIn] = useState(false);
+  let [userName, setUserName] = useState("");
   let navigate = useNavigate();
-const {products} = useSelector((state) => state.cart)
+  const { products } = useSelector((state) => state.cart);
   useEffect(() => {
-      let flag = localStorage.getItem('isLoggedIn')
-      if(flag) {
-        setIsLoggedIn(true)
-        setUserName(localStorage.getItem('name'))
-      }
-  }, [])
-  function goForLogin () {
-    setShowLoginModal(true)
+    let flag = localStorage.getItem("isLoggedIn");
+    if (flag) {
+      setIsLoggedIn(true);
+      setUserName(localStorage.getItem("name"));
+    }
+  }, []);
+  function goForLogin() {
+    setShowLoginModal(true);
   }
 
-  
+  function handleSearch(e) {
+    e.preventDefault();
+
+    if (searchBook.trim() !== "") {
+      console.log("Searching:", searchBook);
+    }
+  }
+
   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark" className="sticky-top">
-        <Container fluid className="px-2">
+      <Navbar
+        bg="dark"
+        data-bs-theme="dark"
+        className="sticky-top"
+        style={{
+          backgroundColor: "black",
+          minHeight: "65px",
+        }}
+      >
+
+        <Container fluid className="px-3">
           {" "}
           <Navbar.Brand className="fw-bold fs-4">
             <img
@@ -41,10 +57,24 @@ const {products} = useSelector((state) => state.cart)
             RDEC BookStore
           </Navbar.Brand>
           
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#books">Books</Nav.Link>
-            <Nav.Link href="#contact us">Contact Us</Nav.Link>
+          {/* Navigation */}
+          <Nav className="align-items-lg-center">
+            <Nav.Link href="/" className="text-white fw-semibold mx-1">
+              <i className="bi bi-house-door me-1"></i>
+              Home
+            </Nav.Link>
+
+            <Nav.Link href="#books" className="text-white fw-semibold mx-1">
+              Books
+            </Nav.Link>
+
+            <Nav.Link
+              href="#contact us"
+              className="text-white fw-semibold mx-1"
+            >
+              Contact Us
+            </Nav.Link>
+
             <Nav.Link
               className="text-white"
               onClick={() => navigate("/cart")}
@@ -85,4 +115,4 @@ const {products} = useSelector((state) => state.cart)
   );
 }
 
-export default NavBar
+export default NavBar;
