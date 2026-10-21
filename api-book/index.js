@@ -7,12 +7,14 @@ const User = require('./routes/UserRoutes');
 const home = require('./routes/User/home')
 const discount = require('./routes/DiscountRoutes')
 const frontUser = require('./routes/User/user')
+const payment = require('./routes/User/payment')
 const app = express();
 app.use(cors());
 app.use(book);
 app.use(discount);
 app.use(home);
 app.use(frontUser);
+app.use(payment);
 app.use(User);
 
 connect();

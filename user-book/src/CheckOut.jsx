@@ -1,8 +1,20 @@
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useSelector } from "react-redux"
+import { useState } from "react"
 
 const CheckOut = () => {
     const { products, totalCost } = useSelector((state) => state.cart);
+    let [firstName, setFirstName] = useState('')
+    let [lastName, setLastName] = useState('')
+    let [email, setEmail] = useState('')
+    let [mobileNo, setMobileNo] = useState('')
+    let [addresLine1, setAddressLine1] = useState('')
+    let [addresLine2, setAddressLine2] = useState("")
+    let [city, setCity] = useState('')
+    let [state, setState] = useState('')
+    let [Country, setCountry] = useState('')
+    let [pinCode, setPinCode] = useState('')
+    let [amount, setAmount] = useState(0)
 
     return (
       <Container>
@@ -14,13 +26,19 @@ const CheckOut = () => {
                 <Col>
                   <Form.Group>
                     <Form.Label>First Name</Form.Label>
-                    <Form.Control type="text"></Form.Control>
+                    <Form.Control
+                      type="text"
+                      onChange={(e) => setFirstName(e.target.value)}
+                    ></Form.Control>
                   </Form.Group>
                 </Col>
                 <Col>
                   <Form.Group>
                     <Form.Label>Last Name</Form.Label>
-                    <Form.Control type="text"></Form.Control>
+                    <Form.Control
+                      type="text"
+                      onChange={(e) => setLastName(e.target.value)}
+                    ></Form.Control>
                   </Form.Group>
                 </Col>
               </Row>
@@ -28,13 +46,19 @@ const CheckOut = () => {
                 <Col>
                   <Form.Group>
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email"></Form.Control>
+                    <Form.Control
+                      type="email"
+                      onChange={(e) => setEmail(e.target.value)}
+                    ></Form.Control>
                   </Form.Group>
                 </Col>
                 <Col>
                   <Form.Group>
                     <Form.Label>Mobile No</Form.Label>
-                    <Form.Control type="text"></Form.Control>
+                    <Form.Control
+                      type="text"
+                      onChange={(e) => setMobileNo(e.target.value)}
+                    ></Form.Control>
                   </Form.Group>
                 </Col>
               </Row>
@@ -43,7 +67,10 @@ const CheckOut = () => {
                 <Col>
                   <Form.Group>
                     <Form.Label>Address Line 1</Form.Label>
-                    <Form.Control type="text"></Form.Control>
+                    <Form.Control
+                      type="text"
+                      onChange={(e) => setAddressLine1(e.target.value)}
+                    ></Form.Control>
                   </Form.Group>
                 </Col>
               </Row>
@@ -51,27 +78,50 @@ const CheckOut = () => {
                 <Col>
                   <Form.Group className="mt-2">
                     <Form.Label>Address Line 2</Form.Label>
-                    <Form.Control type="text"></Form.Control>
+                    <Form.Control
+                      type="text"
+                      onChange={(e) => setAddressLine2(e.target.value)}
+                    ></Form.Control>
                   </Form.Group>
                 </Col>
               </Row>
               <Row className="mt-2">
                 <Col>
                   <Form.Group>
-                    <Form.Label>State</Form.Label>
-                    <Form.Control type="text"></Form.Control>
+                    <Form.Label>City</Form.Label>
+                    <Form.Control
+                      type="text"
+                      onChange={(e) => setCity(e.target.value)}
+                    ></Form.Control>
                   </Form.Group>
                 </Col>
                 <Col>
                   <Form.Group>
+                    <Form.Label>State</Form.Label>
+                    <Form.Control
+                      type="text"
+                      onChange={(e) => setState(e.target.value)}
+                    ></Form.Control>
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Row className="mt-2">
+                <Col>
+                  <Form.Group>
                     <Form.Label>Country</Form.Label>
-                    <Form.Control type="text"></Form.Control>
+                    <Form.Control
+                      type="text"
+                      onChange={(e) => setCountry(e.target.value)}
+                    ></Form.Control>
                   </Form.Group>
                 </Col>
                 <Col>
                   <Form.Group>
                     <Form.Label>Pin Code</Form.Label>
-                    <Form.Control type="text"></Form.Control>
+                    <Form.Control
+                      type="text"
+                      onChange={(e) => setPinCode(e.target.value)}
+                    ></Form.Control>
                   </Form.Group>
                 </Col>
               </Row>
@@ -100,12 +150,6 @@ const CheckOut = () => {
                     </td>
                     <td>{product.bookTittle}</td>
                     <td>₹{product.originalPrice}</td>
-                    <td>
-                      <i
-                        className="bi bi-trash text-danger"
-                        onClick={() => deleteFromCart(product._id)}
-                      ></i>
-                    </td>
                   </tr>
                 ))}
                 <tr>
