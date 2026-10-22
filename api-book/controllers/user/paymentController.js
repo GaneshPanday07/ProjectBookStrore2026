@@ -1,4 +1,5 @@
 const Razorpay = require('razorpay')
+const crypto = require('crypto')
 const Transaction = require('../../models/Transaction')
 
 const makePayment = async(req, res) => {
@@ -10,7 +11,7 @@ const makePayment = async(req, res) => {
         console.log(req.body)
         let transaction = new Transaction(req.body)
         const options = {
-            amount : req.body * 100,
+            amount : req.body.amount * 100,
             currency: 'INR',
             receipt: req.body.firstName
         }
@@ -25,6 +26,32 @@ const makePayment = async(req, res) => {
     }
 }
 
+const verifyPayment = async(req, res) => {
+    try{
+        const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+          req.body;
+        const sign = razorpay_order_id + "|" + razorpay_payment_id;
+        const expectedSign = crypto
+          .createHmac("sha256", "g6RRbKwC1HVvrkFgofeXFp2F")
+          .update(sign.toString())
+          .digest("hex");
+        console.log(expectedSign, "expectedSign");
+        if (razorpay_signature === expectedSign) {
+          // पेमेंट सफल हुआ! यहाँ आप डेटाबेस में स्टूडेंट की फीस "Paid" मार्क कर सकते हैं।
+          return res
+            .status(200)
+            .json({ message: "Payment verified successfully" });
+        } else {
+          return res
+            .status(400)
+            .json({ message: "Invalid signature, payment failed!" });
+        }
+    } catch(err) {
+        console.log(err)
+    }
+}
+
 module.exports = {
   makePayment,
+  verifyPayment,
 };
