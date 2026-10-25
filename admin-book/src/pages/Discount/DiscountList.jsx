@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Button, Col, Container, Row, Form, Table } from 'react-bootstrap';
+import { FaTrash, FaEdit, FaEye } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 const apiUrl = import.meta.env.VITE_API_URL
 import axios from 'axios'
@@ -28,67 +29,93 @@ function DiscountList() {
         navigate('/edit/discount/'+id);
     }
     return (
-        <Container>
-            <Row>
-                <Col>
-                    <Form>
-                        <Form.Group>
-                            <Form.Control type='text' placeholder='type book name to search'>
-                            </Form.Control>
-                        </Form.Group>
-                    </Form>
-                    <Button className='mt-5' variant='success' style={{ float: 'right' }} onClick={goToAddDiscount}>AddDiscount +</Button>
-                </Col>
-            </Row>
-            <Row>
-                <h3 className="mt-2 text-center text-danger">Discount List</h3>
-                <Table bordered hover>
-                    <thead>
-                        <tr>
-                            <th>DiscountName</th>
-                            <th>Discount Type</th>
-                            <th>Discount Value</th>
-                            <th>BookName</th>
-                            <th>Valid From</th>
-                            <th>Valid UPto</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            discounts.map((d) =>
-                                <tr>
-                                    <td>{d.discountName}</td>
-                                    <td>{d.discountType}</td>
-                                    <td>{d.discountValue}</td>
-                                    <td>{d.book?.bookTittle || 'N/A'}</td>
-                                    <td>
-                                        {new Date(d.validFrom).toLocaleDateString("en-IN", {
-                                            timeZone: "Asia/Kolkata"
-                                        })}
-                                    </td>
+      <Container>
+        <Row>
+          <Col>
+            <Form>
+              <Form.Group>
+                <Form.Control
+                  type="text"
+                  placeholder="type book name to search"
+                ></Form.Control>
+              </Form.Group>
+            </Form>
+            <Button
+              className="mt-5"
+              variant="success"
+              style={{ float: "right" }}
+              onClick={goToAddDiscount}
+            >
+              AddDiscount +
+            </Button>
+          </Col>
+        </Row>
+        <Row>
+          <h3 className="mt-2 text-center text-danger">Discount List</h3>
+          <Table bordered hover>
+            <thead>
+              <tr>
+                <th>DiscountName</th>
+                <th>Discount Type</th>
+                <th>Discount Value</th>
+                <th>BookName</th>
+                <th>Valid From</th>
+                <th>Valid UPto</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {discounts.map((d) => (
+                <tr>
+                  <td>{d.discountName}</td>
+                  <td>{d.discountType}</td>
+                  <td>{d.discountValue}</td>
+                  <td>{d.book?.bookTittle || "N/A"}</td>
+                  <td>
+                    {new Date(d.validFrom).toLocaleDateString("en-IN", {
+                      timeZone: "Asia/Kolkata",
+                    })}
+                  </td>
 
-                                    <td>
-                                        {new Date(d.validTo).toLocaleDateString("en-IN", {
-                                            timeZone: "Asia/Kolkata"
-                                        })}
-                                    </td>
-                                    <td className={d.status === "Active" ? "text-success" : "text-danger"}>
-                                        {d.status}
-                                    </td>
-                                    <td>
-                                        <Button variant="warning" size="sm" className="ms-1" onClick={() => goForEdit(d._id)}>Edit</Button>
-                                    </td>
-                                </tr>
-                            )
-                        }
-                    </tbody>
-
-                </Table>
-            </Row>
-        </Container>
-    )
+                  <td>
+                    {new Date(d.validTo).toLocaleDateString("en-IN", {
+                      timeZone: "Asia/Kolkata",
+                    })}
+                  </td>
+                  <td
+                    className={
+                      d.status === "Active" ? "text-success" : "text-danger"
+                    }
+                  >
+                    {d.status}
+                  </td>
+                  <td>
+                    <div className="d-flex gap-2">
+                      <Button
+                        variant="warning"
+                        size="sm"
+                        onClick={() => goForEdit(d._id)}
+                        title="Edit Book"
+                      >
+                        <FaEdit />
+                      </Button>
+                      <Button
+                        variant="danger"
+                        size="sm"
+                        title="Delete Discount"
+                      >
+                        <FaTrash />
+                      </Button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Row>
+      </Container>
+    );
 }
 
 export default DiscountList;

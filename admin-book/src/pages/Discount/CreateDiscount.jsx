@@ -48,66 +48,87 @@ function CreateDiscount() {
    }
 
    return (
-      <Container>
-         <Row>
-            <Col>
-               <Form>
-                  <h3 className='mt-5 text-center text-danger'>Add Discount on Book</h3>
-               </Form>
-            </Col>
-         </Row>
-         <Row>
-            <Col>
-               <Form.Group>
-                  <Form.Label>Select Book</Form.Label>
-                  <Form.Select onChange={(e) => setBook(e.target.value)}>
-                     <option>---SelectBook---</option>
-                     {
-                        books.map((book) =>
-                           <option value={book._id}>{book.bookTittle}</option>
-                        )
-                     }
-                  </Form.Select>
-               </Form.Group>
-            </Col>
-         </Row>
-         <Row className='mt-2'>
-            <Form.Group>
-               <Form.Label>Discount Name</Form.Label>
-               <Form.Control type='text' onChange={(e) => setDiscountName(e.target.value)}></Form.Control>
-            </Form.Group>
-         </Row>
-         <Row className='mt-2'>
-            <Form.Group>
-               <Form.Label>Discount Type</Form.Label>
-               <Form.Select onChange={(e) => setDiscountType(e.target.value)}>
-                  <option value=''>---select---</option>
-                  <option value='Percentage'>Percentage</option>
-                  <option value='Fixed'>Fixed</option>
-               </Form.Select>
-            </Form.Group>
-         </Row>
-         <Row className='mt-2'>
-            <Form.Group>
-               <Form.Label>Discount Value in Number Only</Form.Label>
-               <Form.Control type='number' onChange={(e) => setDiscountValue(e.target.value)}></Form.Control>
-            </Form.Group>
-         </Row>
-         <Row className='mt-2'>
-            <Form.Group>
-               <Form.Label>Valid From</Form.Label>
-               <Form.Control type='date' onChange={(e) => setValidFrom(e.target.value)}></Form.Control>
-            </Form.Group>
-         </Row>
-         <Row className='mt-2'>
-            <Form.Group>
-               <Form.Label>Valid Upto</Form.Label>
-               <Form.Control type='date' onChange={(e) => setValidTo(e.target.value)}></Form.Control>
-            </Form.Group>
-         </Row>
-         <Button className='mt-3' variant='success' onClick={addDiscount}>Add Discount</Button>
-      </Container>
-   )
+     <Container>
+       <Row>
+         <Col>
+           <Form>
+             <h3 className="mt-5 text-center text-danger">
+               Add Discount on Book
+             </h3>
+           </Form>
+         </Col>
+       </Row>
+       <Row>
+         <Col>
+           <Form.Group>
+             <Form.Label>Select Book</Form.Label>
+             <Form.Select onChange={(e) => setBook(e.target.value)}>
+               <option>---SelectBook---</option>
+               {books.map((book) => (
+                 <option value={book._id}>{book.bookTittle}</option>
+               ))}
+             </Form.Select>
+           </Form.Group>
+         </Col>
+       </Row>
+       <Row className="mt-2">
+         <Form.Group>
+           <Form.Label>Discount Name</Form.Label>
+           <Form.Control
+             type="text"
+             onChange={(e) => setDiscountName(e.target.value)}
+           ></Form.Control>
+         </Form.Group>
+       </Row>
+       <Row className="mt-2">
+         <Form.Group>
+           <Form.Label>Discount Type</Form.Label>
+           <Form.Select onChange={(e) => setDiscountType(e.target.value)}>
+             <option value="">---select---</option>
+             <option value="Percentage">Percentage</option>
+             <option value="Fixed">Fixed</option>
+           </Form.Select>
+         </Form.Group>
+       </Row>
+       <Row className="mt-2">
+         <Form.Group>
+           <Form.Label>Discount Value in Number Only</Form.Label>
+           <Form.Control
+             type="number"
+             onChange={(e) => setDiscountValue(e.target.value)}
+           ></Form.Control>
+         </Form.Group>
+       </Row>
+       <Row className="mt-2">
+         <Form.Group>
+           <Form.Label>Valid From</Form.Label>
+           <Form.Control
+             type="date"
+             onChange={(e) => setValidFrom(e.target.value)}
+           ></Form.Control>
+         </Form.Group>
+       </Row>
+       <Row className="mt-2">
+         <Form.Group>
+           <Form.Label>Valid Upto</Form.Label>
+           <Form.Control
+             type="date"
+             onChange={(e) => setValidTo(e.target.value)}
+           ></Form.Control>
+         </Form.Group>
+       </Row>
+       <Button className="mt-3" variant="success" onClick={addDiscount}>
+         Add Discount
+       </Button>
+       <Button
+         className="ms-2 mt-3"
+         variant="secondary"
+         onClick={() => navigate("/discounts")}
+       >
+         Cancel
+       </Button>
+     </Container>
+   );
 }
 
 export default CreateDiscount;

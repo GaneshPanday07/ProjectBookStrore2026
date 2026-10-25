@@ -27,50 +27,51 @@ function Sidebar() {
   }
   return (
     <>
-      <div className="d-flex flex-column justify-content-between border-end sticky-top" style={{ width: '18%', height: '100vh', borderRight: '1px solid #dee2e6', boxShadow: '2px 0 8px rgba(0, 0, 0, 0.1)' }}>
-
+      <div
+        className="d-flex flex-column justify-content-between border-end sticky-top"
+        style={{
+          width: "18%",
+          height: "100vh",
+          borderRight: "1px solid #dee2e6",
+          boxShadow: "2px 0 8px rgba(0, 0, 0, 0.1)",
+        }}
+      >
         <div className="p-3 border-bottom d-flex align-items-center">
           <Image src={logo} width={40} height={40} className="me-2" />
           <span className="fw-bold d-none d-md-inline fs-2">RDEC</span>
         </div>
 
-
         <div className="flex-grow-1 overflow-auto">
-          <ListGroup variant="flush" className="pt-4 px-3 flex-grow-1 overflow-auto">
-
+          <ListGroup
+            variant="flush"
+            className="pt-4 px-3 flex-grow-1 overflow-auto"
+          >
             <ListGroup.Item
               as={NavLink}
               to="/books"
-              className="d-flex align-items-center gap-2">
-              <i className='bi bi-book'></i>
+              className="d-flex align-items-center gap-2"
+            >
+              <i className="bi bi-book"></i>
               <span className="d-none d-md-inline">Manage Book</span>
             </ListGroup.Item>
 
             <ListGroup.Item
               as={NavLink}
-              to="/users"
-              className="d-flex align-items-center gap-2">
-              <i className='bi bi-book'></i>
-              <span className="d-none d-md-inline">Manage User</span>
-            </ListGroup.Item>
-
-            <ListGroup.Item
-              as={NavLink}
               to="/discounts"
-              className="d-flex align-items-center gap-2">
-              <i className='bi bi-book'></i>
+              className="d-flex align-items-center gap-2"
+            >
+              <i className="bi bi-percent"></i>
               <span className="d-none d-md-inline">Manage Discount</span>
             </ListGroup.Item>
 
             <ListGroup.Item
               as={NavLink}
-              to="/availabilty"
-              className="d-flex align-items-center gap-2">
-              <i className='bi bi-book'></i>
-              <span className="d-none d-md-inline">Manage Availabilty</span>
+              to="/users"
+              className="d-flex align-items-center gap-2"
+            >
+              <i className="bi bi-people"></i>
+              <span className="d-none d-md-inline">Manage User</span>
             </ListGroup.Item>
-
-
           </ListGroup>
         </div>
 
@@ -90,9 +91,18 @@ function Sidebar() {
                   className="me-2"
                 /> */}
                 <div>
-                  <h6 className="mb-0">{username} <small className="text-muted">Admin</small>   </h6>
+                  <h6 className="mb-0">
+                    {username} <small className="text-muted">Admin</small>{" "}
+                  </h6>
 
-                  <Button className="mt-1" variant="danger" size='sm' onClick={doLogout}>Logout</Button>
+                  <Button
+                    className="mt-1"
+                    variant="danger"
+                    size="sm"
+                    onClick={doLogout}
+                  >
+                    Logout
+                  </Button>
                 </div>
               </div>
               {/* <i className="bi bi-chevron-up"></i> */}
