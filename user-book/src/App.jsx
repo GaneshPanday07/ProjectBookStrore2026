@@ -10,27 +10,30 @@ import { Provider } from 'react-redux'
 import store from './app/store.js'
 import Cart from './Cart.jsx'
 import CheckOut from './CheckOut.jsx'
+import MyOrder from './MyOrder.jsx'
 
 
 function App () {
   return (
     <>
-    <Provider store={store}>
-    <BrowserRouter>
-        <NavBar />
-        <Routes>
-      <Route path='/' element={<HomeCard></HomeCard>}></Route>
-      <Route path='/user/book/detail/:id' element={<BookDetail></BookDetail>}></Route>
-      <Route path='/cart' element={<Cart />}></Route>
-      <Route path='/checkout' element={<CheckOut />}></Route>
-    </Routes>
-      <Footer />
-    </BrowserRouter>
-    </Provider>
-
-    
+      <Provider store={store}>
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<HomeCard></HomeCard>}></Route>
+            <Route
+              path="/user/book/detail/:id"
+              element={<BookDetail></BookDetail>}
+            ></Route>
+            <Route path="/cart" element={<Cart />}></Route>
+            <Route path="/checkout" element={<CheckOut />}></Route>
+            <Route path="/myorder" element={<MyOrder />}></Route>
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </Provider>
     </>
-  )
+  );
 }
 
 export default App

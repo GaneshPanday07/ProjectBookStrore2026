@@ -133,6 +133,11 @@ function NavBar() {
                 <i className="bi bi-telephone me-1"></i>
                 Contact
               </Nav.Link>
+
+              <Nav.Link href="/myorder" className="text-white fw-semibold mx-1">
+                <i className="bi bi-telephone me-1"></i>
+                my order
+              </Nav.Link>
               <Nav.Link
                 className="text-white"
                 onClick={goToCartPage}

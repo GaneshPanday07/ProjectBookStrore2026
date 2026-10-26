@@ -38,6 +38,10 @@ const verifyPayment = async(req, res) => {
         console.log(expectedSign, "expectedSign");
         if (razorpay_signature === expectedSign) {
           // पेमेंट सफल हुआ! यहाँ आप डेटाबेस में स्टूडेंट की फीस "Paid" मार्क कर सकते हैं।
+          let transaction = await Transaction.findOne({ transactionId: razorpay_order_id })
+          transaction.status = "Completed";
+          await transaction.save();
+
           return res
             .status(200)
             .json({ message: "Payment verified successfully" });

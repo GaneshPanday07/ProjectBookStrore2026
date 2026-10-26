@@ -39,6 +39,7 @@ function CheckOut() {
       state: state,
       country: country,
       pinCode: pinCode,
+      products : products,
       amount: totalCost,
     };
     const res = await loadScript(

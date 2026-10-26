@@ -1,15 +1,16 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Sidebar from './components/Sidebar'
-import WelcomePage from './pages/WelcomePage/WelcomePage'
-import BookList from './pages/books/BookList'
-import AddBook from './pages/books/AddBook'
-import BookPageForEdit from './pages/books/BookPageForEdit'
-import AdminLogin from './pages/LoginSignupPages/AdminLogin'
-import CreateDiscount from './pages/Discount/CreateDiscount'
-import DiscountList from './pages/Discount/DiscountList'
-import DiscountForEdit from './pages/Discount/DiscountForEdit'
-import BookDetail from './pages/books/BookDetail'
-import UserList from './pages/Users/UserList'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import WelcomePage from "./pages/WelcomePage/WelcomePage";
+import BookList from "./pages/books/BookList";
+import AddBook from "./pages/books/AddBook";
+import BookPageForEdit from "./pages/books/BookPageForEdit";
+import AdminLogin from "./pages/LoginSignupPages/AdminLogin";
+import CreateDiscount from "./pages/Discount/CreateDiscount";
+import DiscountList from "./pages/Discount/DiscountList";
+import DiscountForEdit from "./pages/Discount/DiscountForEdit";
+import BookDetail from "./pages/books/BookDetail";
+import UserList from "./pages/Users/UserList";
+import TransactionList from "./pages/Transaction/TransactionList";
 function App() {
   return (
     <BrowserRouter>
@@ -45,7 +46,9 @@ function App() {
               element={<DiscountForEdit></DiscountForEdit>}
             ></Route>
             <Route path="/book/:id" element={<BookDetail></BookDetail>}></Route>
-            <Route path='/users' element={<UserList></UserList>}></Route>
+            <Route path="/users" element={<UserList></UserList>}></Route>
+
+            <Route path="/transactions" element={<TransactionList />}></Route>
           </Routes>
         </main>
       </div>
@@ -53,4 +56,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
