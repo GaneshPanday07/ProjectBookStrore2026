@@ -7,4 +7,7 @@ router.post('/create-order', (req, res) => {
 router.post('./verify-payment', (req, res)=> {
     paymentController.verifyPayment(req, res)
 })
+router.post('/my/orders', (req, res)=> {
+    paymentController.getMyOrders(req, res)
+});
 module.exports = router;

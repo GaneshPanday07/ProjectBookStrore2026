@@ -1,21 +1,29 @@
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { deleteCart } from "./features/cart/cartSlice";
+
 const apiUrl = import.meta.env.VITE_API_URL;
+
 function CheckOut() {
   const { products, totalCost } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
   let [firstName, setFirstName] = useState("");
   let [lastName, setLastName] = useState("");
   let [email, setEmail] = useState("");
   let [mobileNo, setMobileNo] = useState("");
   let [addressLine1, setAddressLine1] = useState("");
-  let [addressLine2, setAddressLine2] = useState("");
+  let [addressLine2, setaddressLine2] = useState("");
   let [city, setCity] = useState("");
   let [state, setState] = useState("");
   let [country, setCountry] = useState("");
   let [pinCode, setPinCode] = useState("");
-  let [amount, setAmount] = useState(0);
-
+  // let [amount, setAmount] = useState(0)
+  function deleteCartOnPaymentSuccess() {
+    dispatch(deleteCart());
+  }
   const loadScript = (src) => {
     return new Promise((resolve) => {
       const script = document.createElement("script");
@@ -26,8 +34,7 @@ function CheckOut() {
       document.body.appendChild(script);
     });
   };
-
-  const goForPayment = async () => {
+  async function goForPayment() {
     let data = {
       firstName: firstName,
       lastName: lastName,
@@ -39,7 +46,7 @@ function CheckOut() {
       state: state,
       country: country,
       pinCode: pinCode,
-      products : products,
+      products: products,
       amount: totalCost,
     };
     const res = await loadScript(
@@ -56,13 +63,14 @@ function CheckOut() {
     });
     const orderData = await response.json();
     const options = {
-      key: "rzp_test_TqS7RUAEospGjt",
+      key: "rzp_test_TqS7RUAEospGjt", // test_key is here
       amount: orderData.amount,
       currency: orderData.currency,
-      name: "Online Book Store",
+      name: "G.K.P. Book Store",
       description: "Payment for Book",
       order_id: orderData.id,
       handler: async function (response) {
+        // स्टेप 4: पेमेंट सफल होने पर बैकएंड पर वेरिफिकेशन भेजें
         const verifyResponse = await fetch(apiUrl + "/verify-payment", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -71,20 +79,25 @@ function CheckOut() {
         const verifyData = await verifyResponse.json();
         if (verifyResponse.ok) {
           alert("Payment has been done successfully");
+          {
+            deleteCartOnPaymentSuccess();
+          }
+          navigate('/payment/success', { state: verifyData.data });
         } else {
           alert("Verification Failed: " + verifyData.message);
+          navigate("/payment/fail");
         }
       },
       prefill: {
-        name: "Yogesh",
-        email: "ys@yopmail.com",
-        contact: "9999999999",
+        name: "GouravKumar",
+        email: "gkp@bookstore.com",
+        contact: "81xxxxxx32",
       },
       theme: { color: "#3399cc" },
     };
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
-  };
+  }
   return (
     <Container>
       <Row>
@@ -149,7 +162,7 @@ function CheckOut() {
                   <Form.Label>Address Line 2</Form.Label>
                   <Form.Control
                     type="text"
-                    onChange={(e) => setAddressLine2(e.target.value)}
+                    onChange={(e) => setaddressLine2(e.target.value)}
                   ></Form.Control>
                 </Form.Group>
               </Col>
@@ -157,10 +170,10 @@ function CheckOut() {
             <Row className="mt-2">
               <Col>
                 <Form.Group>
-                  <Form.Label>Country</Form.Label>
+                  <Form.Label>City</Form.Label>
                   <Form.Control
                     type="text"
-                    onChange={(e) => setCountry(e.target.value)}
+                    onChange={(e) => setCity(e.target.value)}
                   ></Form.Control>
                 </Form.Group>
               </Col>
@@ -175,13 +188,13 @@ function CheckOut() {
                 </Form.Group>
               </Col>
             </Row>
-            <Row>
+            <Row className="mt-2">
               <Col>
                 <Form.Group>
-                  <Form.Label>City</Form.Label>
+                  <Form.Label>Country</Form.Label>
                   <Form.Control
                     type="text"
-                    onChange={(e) => setCity(e.target.value)}
+                    onChange={(e) => setCountry(e.target.value)}
                   ></Form.Control>
                 </Form.Group>
               </Col>
@@ -210,7 +223,7 @@ function CheckOut() {
             </thead>
             <tbody>
               {products.map((product) => (
-                <tr>
+                <tr key={product._id}>
                   <td>
                     <img
                       src={product.bookImage}
@@ -230,7 +243,7 @@ function CheckOut() {
             </tbody>
           </table>
           <Button
-            style={{ width: "180px", float: "right" }}
+            style={{ width: "150px", float: "right" }}
             size="lg"
             variant="warning"
             className="mt-2"

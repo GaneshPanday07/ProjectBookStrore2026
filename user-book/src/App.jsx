@@ -11,6 +11,8 @@ import store from './app/store.js'
 import Cart from './Cart.jsx'
 import CheckOut from './CheckOut.jsx'
 import MyOrder from './MyOrder.jsx'
+import PaymentSuccess from './PaymentSuccess.jsx'
+import PaymentFailure from './PaymentFailure.jsx'
 
 
 function App () {
@@ -28,6 +30,8 @@ function App () {
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/checkout" element={<CheckOut />}></Route>
             <Route path="/myorder" element={<MyOrder />}></Route>
+            <Route path="/payment/success" element={<PaymentSuccess />}></Route>
+            <Route path="/payment/fail" element={<PaymentFailure />}></Route>
           </Routes>
           <Footer />
         </BrowserRouter>

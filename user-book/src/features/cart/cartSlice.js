@@ -19,7 +19,10 @@ let cartSlice = createSlice({
         (product) => product._id !== action.payload,
       );
     },
+    deleteCart : (state, action) => {
+      state.products.length()
+    } 
   },
 });
-export const { addProduct, deleteProduct,totalCost } = cartSlice.actions;
+export const { addProduct, deleteProduct, totalCost, deleteCart } = cartSlice.actions;
 export default cartSlice.reducer;

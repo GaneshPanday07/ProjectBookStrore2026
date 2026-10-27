@@ -39,12 +39,15 @@ const verifyPayment = async(req, res) => {
         if (razorpay_signature === expectedSign) {
           // पेमेंट सफल हुआ! यहाँ आप डेटाबेस में स्टूडेंट की फीस "Paid" मार्क कर सकते हैं।
           let transaction = await Transaction.findOne({ transactionId: razorpay_order_id })
-          transaction.status = "Completed";
+          transaction.status = 'Completed';
           await transaction.save();
 
           return res
             .status(200)
-            .json({ message: "Payment verified successfully" });
+            .json({
+              message: "Payment verified successfully",
+              data: razorpay_order_id,
+            });
         } else {
           return res
             .status(400)
@@ -55,7 +58,21 @@ const verifyPayment = async(req, res) => {
     }
 }
 
+const getMyOrders = async(req,res) => {
+  try{
+    let { email } = req.body;
+    console.log(email, 'email')
+    let myorders = await Transaction.find({ email: email})
+    console.log(myorders, 'myorders')
+    res.status(200).send({ data : myorders })
+  } catch(err) {
+    console.log(err)
+    res.status(500).send({ message: 'something went wrong' });
+  }
+}
+
 module.exports = {
   makePayment,
   verifyPayment,
+  getMyOrders,
 };

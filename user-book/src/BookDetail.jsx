@@ -30,169 +30,185 @@ function BookDetail () {
     dispatch(addProduct(book))
   }
 
+  const buyNow = () => {
+    dispatch(addProduct(book));
+    navigate("/checkout");
+  }
+
   return (
-    <Container className='py-4'>
+    <Container className="py-4">
       {/* Back Button */}
-      <Button variant='dark' className='mb-4' onClick={() => navigate('/')}>
+      <Button variant="dark" className="mb-4" onClick={() => navigate("/")}>
         ← Back
       </Button>
       {/* Main Book Card */}
-      <Card className='shadow-sm border-1'>
+      <Card className="shadow-sm border-1">
         <Card.Body>
           <Row>
-            <Col md={4} className='text-center'>
+            <Col md={4} className="text-center">
               {book.bookImage ? (
                 <img
                   src={book.bookImage}
                   alt={book.bookTittle}
-                  className='img-fluid'
+                  className="img-fluid"
                   style={{
-                    width: '100%',
-                    maxWidth: '350px',
-                    height: '450px',
-                    objectFit: 'contain'
+                    width: "100%",
+                    maxWidth: "350px",
+                    height: "450px",
+                    objectFit: "contain",
                   }}
                 />
               ) : (
                 <div
-                  className='d-flex align-items-center justify-content-center border rounded'
+                  className="d-flex align-items-center justify-content-center border rounded"
                   style={{
-                    width: '100%',
-                    maxWidth: '350px',
-                    height: '450px',
-                    margin: 'auto'
+                    width: "100%",
+                    maxWidth: "350px",
+                    height: "450px",
+                    margin: "auto",
                   }}
                 >
                   No Image
                 </div>
               )}
               <Button
-                className='mt-4'
-                style={{ width: '345px' }}
-                size='lg'
-                variant='warning'
+                className="mt-4"
+                style={{ width: "345px" }}
+                size="lg"
+                variant="warning"
                 onClick={addToCart}
               >
                 Add To Cart
               </Button>
             </Col>
             <Col md={8}>
-              <h2 className='fw-bold'>{book.bookTittle || '-'}</h2>
+              <h2 className="fw-bold">{book.bookTittle || "-"}</h2>
 
-              <p className='text-muted fs-5'>By {book.authorName || '-'}</p>
+              <p className="text-muted fs-5">By {book.authorName || "-"}</p>
 
               <hr />
-              <div className='mb-4'>
-                <h4 className='fw-bold text-success'>
-                  ₹{book.originalPrice || '-'}
+              <div className="mb-4">
+                <h4 className="fw-bold text-success">
+                  ₹{book.originalPrice || "-"}
                 </h4>
               </div>
 
               {book.shortDescription && (
-                <div className='mb-4'>
-                  <h5 className='fw-bold'>About this book</h5>
+                <div className="mb-4">
+                  <h5 className="fw-bold">About this book</h5>
 
                   <p>{book.shortDescription}</p>
                 </div>
               )}
-              <h5 className='fw-bold mb-3'>Book Details</h5>
+              <h5 className="fw-bold mb-3">Book Details</h5>
 
-              <BookDetailLocal label='Author' value={book.authorName} />
+              <BookDetailLocal label="Author" value={book.authorName} />
 
-              <BookDetailLocal label='Imprint' value={book.imprint} />
+              <BookDetailLocal label="Imprint" value={book.imprint} />
 
-              <BookDetailLocal label='Publisher' value={book.publisher} />
+              <BookDetailLocal label="Publisher" value={book.publisher} />
 
               <BookDetailLocal
-                label='Publication Year'
+                label="Publication Year"
                 value={book.publicationYear}
               />
 
-              <BookDetailLocal label='ISBN' value={book.isbnNo} />
+              <BookDetailLocal label="ISBN" value={book.isbnNo} />
 
-              <BookDetailLocal label='Edition' value={book.edition} />
+              <BookDetailLocal label="Edition" value={book.edition} />
 
-              <BookDetailLocal label='Language' value={book.language} />
+              <BookDetailLocal label="Language" value={book.language} />
 
-              <BookDetailLocal label='Genre' value={book.genre} />
+              <BookDetailLocal label="Genre" value={book.genre} />
 
-              <BookDetailLocal label='Category' value={book.bookCategory} />
+              <BookDetailLocal label="Category" value={book.bookCategory} />
 
-              <BookDetailLocal label='Rating' value={book.rating} />
+              <BookDetailLocal label="Rating" value={book.rating} />
 
-              <BookDetailLocal label='Reviews' value={book.reviews} />
+              <BookDetailLocal label="Reviews" value={book.reviews} />
             </Col>
           </Row>
         </Card.Body>
       </Card>
-      
-      <div className='d-flex align-items-center justify-content-end gap-3 mt-3'>
+
+      <div className="d-flex align-items-center justify-content-end gap-3 mt-3">
         {/* Pincode Section */}
-        <div className='d-flex align-items-center gap-2'>
-          <h5 className='mb-1'>Check Delivery:</h5>
+        <div className="d-flex align-items-center gap-2">
+          <h5 className="mb-1">Check Delivery:</h5>
 
           <Form.Control
-            type='text'
-            placeholder='Enter Pincode'
+            type="text"
+            placeholder="Enter Pincode"
             maxLength={6}
-            style={{ width: '180px' }}
+            style={{ width: "180px" }}
           />
 
-          <Button variant='primary'>Check</Button>
+          <Button variant="primary">Check</Button>
         </div>
 
         {/* Add To Cart */}
-        <Button style={{ width: '180px' }} size='lg' variant='warning' onClick={addToCart}>
+        <Button
+          style={{ width: "180px" }}
+          size="lg"
+          variant="warning"
+          onClick={addToCart}
+        >
           Add To Cart
         </Button>
 
         {/* Buy Now */}
-        <Button style={{ width: '180px' }} size='lg' variant='success'>
+        <Button
+          style={{ width: "180px" }}
+          size="lg"
+          variant="success"
+          onClick={buyNow}
+
+        >
           Buy Now
         </Button>
       </div>
-      
+
       {/* DESCRIPTION */}
       {book.description && (
-        <Card className='shadow-sm border-1 mt-4'>
+        <Card className="shadow-sm border-1 mt-4">
           <Card.Body>
-            <h4 className='fw-bold'>Description</h4>
+            <h4 className="fw-bold">Description</h4>
 
-            <p className='mt-3'>{book.description}</p>
+            <p className="mt-3">{book.description}</p>
           </Card.Body>
         </Card>
       )}
-      <Card className='shadow-sm border-1 mt-4'>
+      <Card className="shadow-sm border-1 mt-4">
         <Card.Body>
-          <h4 className='fw-bold mb-3'>Product Highlights</h4>
+          <h4 className="fw-bold mb-3">Product Highlights</h4>
 
           <BookDetailLocal
-            label='Country of Origin'
+            label="Country of Origin"
             value={book.countryOfOrigin}
           />
 
-          <BookDetailLocal label='Product From' value={book.productFrom} />
+          <BookDetailLocal label="Product From" value={book.productFrom} />
 
           <BookDetailLocal
-            label='Manufacturer'
+            label="Manufacturer"
             value={book.nameOfManufacturer}
           />
 
           <BookDetailLocal
-            label='Manufacturer Address'
+            label="Manufacturer Address"
             value={book.addressOfManufacturer}
           />
 
-          <BookDetailLocal label='Packager' value={book.nameOfPackager} />
+          <BookDetailLocal label="Packager" value={book.nameOfPackager} />
 
           <BookDetailLocal
-            label='Packager Address'
+            label="Packager Address"
             value={book.addressOfPackager}
           />
         </Card.Body>
       </Card>
     </Container>
-  )
+  );
 }
 
 function BookDetailLocal ({ label, value }) {
