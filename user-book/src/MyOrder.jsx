@@ -1,5 +1,6 @@
 import { useState, useEffect} from "react"
 import axios from "axios"
+import { Container, Row, Col, Table } from "react-bootstrap"
 const apiUrl = import.meta.env.VITE_API_URL
 const MyOrder = () => {
     let [myOrders, setMyOrders] = useState([])
@@ -23,8 +24,19 @@ const MyOrder = () => {
             alert('please Login to view your orders')
         }
     },[])
-    return(
-        <h1> we will show user all order here...</h1>
-    )
+    return (
+      <Container>
+        <Row className="text-center text-danger mt-4">
+          <h1>Myorder List</h1>
+          <Col>
+            <Table>
+                <thead>
+                    <th></th>    
+                </thead>    
+            </Table>          
+          </Col>
+        </Row>
+      </Container>
+    );
 }
 export default MyOrder

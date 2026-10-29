@@ -16,7 +16,7 @@ const transactionSchema = new Schema({
   amount: { type: Number },
   status: { type: String, default: 'pending', enum: ['pending', 'Completed'] },
   products: { type: JSON, default: [] },
-}, { timeStamps: true });
+}, { timestamps: true });
 
 module.exports = mongoose.model('Transaction', transactionSchema)
 

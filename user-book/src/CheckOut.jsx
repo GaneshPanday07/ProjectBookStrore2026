@@ -20,7 +20,7 @@ function CheckOut() {
   let [state, setState] = useState("");
   let [country, setCountry] = useState("");
   let [pinCode, setPinCode] = useState("");
-  // let [amount, setAmount] = useState(0)
+ let [amount, setAmount] = useState(0)
   function deleteCartOnPaymentSuccess() {
     dispatch(deleteCart());
   }
@@ -63,10 +63,10 @@ function CheckOut() {
     });
     const orderData = await response.json();
     const options = {
-      key: "rzp_test_TqS7RUAEospGjt", // test_key is here
+      key: "rzp_test_TtC9pany1RM8P3", // test_key is here
       amount: orderData.amount,
       currency: orderData.currency,
-      name: "G.K.P. Book Store",
+      name: "RDEC Book Store",
       description: "Payment for Book",
       order_id: orderData.id,
       handler: async function (response) {
@@ -79,18 +79,16 @@ function CheckOut() {
         const verifyData = await verifyResponse.json();
         if (verifyResponse.ok) {
           alert("Payment has been done successfully");
-          {
-            deleteCartOnPaymentSuccess();
-          }
-          navigate('/payment/success', { state: verifyData.data });
+          deleteCartOnPaymentSuccess();
+          navigate("/payment/success", { state: verifyData.data });
         } else {
           alert("Verification Failed: " + verifyData.message);
           navigate("/payment/fail");
         }
       },
       prefill: {
-        name: "GouravKumar",
-        email: "gkp@bookstore.com",
+        name: "Ganesh Pandey",
+        email: "gp@bookstore.com",
         contact: "81xxxxxx32",
       },
       theme: { color: "#3399cc" },

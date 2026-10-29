@@ -5,8 +5,8 @@ const Transaction = require('../../models/Transaction')
 const makePayment = async(req, res) => {
     try{
         const razorpay = new Razorpay({
-          key_id: "rzp_test_TqS7RUAEospGjt",
-          key_secret: "g6RRbKwC1HVvrkFgofeXFp2F",
+          key_id: "rzp_test_TtC9pany1RM8P3",
+          key_secret: "9O58RgheLtqMlgJqGLqxDZQf",
         });
         console.log(req.body)
         let transaction = new Transaction(req.body)
@@ -18,8 +18,9 @@ const makePayment = async(req, res) => {
         const order = await razorpay.orders.create(options);
         console.log(order)
         transaction.transactionId = order.id
-        res.status(200).json(order);
         await transaction.save();
+        res.status(200).json(order);
+        
     } catch(err) {
         console.log(err)
         res.status(400).send(err);
@@ -32,7 +33,7 @@ const verifyPayment = async(req, res) => {
           req.body;
         const sign = razorpay_order_id + "|" + razorpay_payment_id;
         const expectedSign = crypto
-          .createHmac("sha256", "g6RRbKwC1HVvrkFgofeXFp2F")
+          .createHmac("sha256", "9O58RgheLtqMlgJqGLqxDZQf")
           .update(sign.toString())
           .digest("hex");
         console.log(expectedSign, "expectedSign");
