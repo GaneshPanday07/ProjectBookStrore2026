@@ -9,8 +9,10 @@ const discount = require('./routes/DiscountRoutes')
 const frontUser = require('./routes/User/user')
 const payment = require('./routes/User/payment')
 const transaction = require("./routes/PaymentRoutes")
+
 const app = express();
 app.use(cors());
+
 app.use(book);
 app.use(discount);
 app.use(home);
