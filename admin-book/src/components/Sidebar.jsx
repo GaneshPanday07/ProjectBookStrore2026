@@ -114,7 +114,6 @@ function Sidebar() {
                   </Button>
                 </div>
               </div>
-              {/* <i className="bi bi-chevron-up"></i> */}
             </Dropdown.Toggle>
 
             <Dropdown.Menu className="w-100">
