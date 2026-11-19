@@ -25,9 +25,9 @@ const TransactionList = () => {
                 <tr>
                   <th>Transaction Id</th>
                   <th>Email Id</th>
-                  <td>Products</td>
-                  <td>Amount</td>
-                  <td>Status</td>
+                  <th>Products</th>
+                  <th>Amount</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
