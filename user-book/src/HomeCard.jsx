@@ -31,6 +31,7 @@ function HomeCard() {
   function goToDetailPage(id) {
     navigate("/user/book/detail/" + id);
   }
+  
   return (
     <>
       <Container fluid className="py-5 px-3 px-md-4">

@@ -96,6 +96,7 @@ function CheckOut() {
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
   }
+  
   return (
     <Container>
       <Row>
