@@ -28,6 +28,10 @@ function DiscountList() {
         
         navigate('/edit/discount/'+id);
     }
+
+    const deleteDiscount = () => {
+      
+    }
     return (
       <Container>
         <Row>
@@ -104,6 +108,7 @@ function DiscountList() {
                         variant="danger"
                         size="sm"
                         title="Delete Discount"
+                        onClick={deleteDiscount}
                       >
                         <FaTrash />
                       </Button>
