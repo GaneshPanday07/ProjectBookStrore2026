@@ -60,10 +60,22 @@ const editDiscount = async (req, res) => {
   }
 }
 
+const deleteDiscount = async (req, res) => {
+  try{
+    let id = req.params.id;
+    await Discount.deleteOne({_id: id})
+    res.status(200).send({message: 'data Delete Successfully...'})
+  } catch(err) {
+    console.log(err);
+    res.status(400).send({message: 'data delete Failed...'})
+  }
+}
+
 module.exports = {
   getBooks,
   addDiscount,
   getDiscounts,
   getDiscountForEdit,
   editDiscount,
-}
+  deleteDiscount,
+};

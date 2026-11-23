@@ -18,5 +18,8 @@ router.get('/discount/for/edit/:id', (req, res) => {
 router.put('/edit/discount/:id', (req, res) => {
     DiscountController.editDiscount(req, res);
 });
+router.delete('/delete/discount/:id', (req, res) => {
+    DiscountController.deleteDiscount(req, res);
+})
 
 module.exports = router;
