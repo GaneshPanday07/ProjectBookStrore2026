@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Button, Col, Container, Row, Form, Table } from 'react-bootstrap';
-import { FaTrash, FaEdit, FaEye } from 'react-icons/fa'
+import { FaTrash, FaEdit} from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 const apiUrl = import.meta.env.VITE_API_URL
 import axios from 'axios'

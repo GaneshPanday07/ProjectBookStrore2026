@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import { Container, Row, Col, Table } from "react-bootstrap";
+import { Container, Row, Col, Table, Button } from "react-bootstrap";
+import { FaTrash, FaEdit } from "react-icons/fa";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const TransactionList = () => {
@@ -15,6 +16,17 @@ const TransactionList = () => {
             alert(err.message)
         })
     }, [])
+
+  const deleteTransaction = (id) => {
+    axios({
+      url: apiUrl + 'delete/transaction/' + id,
+      method: 'delete'
+    }).then((res) => {
+      alert(res.data.message)
+    }).catch((err) => {
+      alert(err.message)
+    })
+  }
     return (
       <Container>
         <Row>
@@ -39,6 +51,18 @@ const TransactionList = () => {
                     <td>{transaction.products[0].bookTittle}</td>
                     <td>{transaction.amount}</td>
                     <td>{transaction.status}</td>
+                    <td>
+                      <div>
+                        <Button
+                          variant="danger"
+                          size="sm"
+                          title="Delete transaction"
+                          onClick={() => deleteTransaction(transaction._id)}
+                        >
+                          <FaTrash />
+                        </Button>
+                      </div>
+                    </td>
                   </tr>
                 ))}
               </tbody>
